@@ -1,0 +1,6 @@
+/Users/bojzi/Projects/Private/spring-sandbox/spring-sandbox-data/src/main/java/com/poslek/springsandbox/model/BaseEntity.java
+/Users/bojzi/Projects/Private/spring-sandbox/spring-sandbox-data/src/main/java/com/poslek/springsandbox/model/SuperHero.java
+/Users/bojzi/Projects/Private/spring-sandbox/spring-sandbox-data/src/main/java/com/poslek/springsandbox/services/SuperheroService.java
+/Users/bojzi/Projects/Private/spring-sandbox/spring-sandbox-data/src/main/java/com/poslek/springsandbox/repositories/SuperHeroRepository.java
+/Users/bojzi/Projects/Private/spring-sandbox/spring-sandbox-data/src/main/java/com/poslek/springsandbox/services/CrudService.java
+/Users/bojzi/Projects/Private/spring-sandbox/spring-sandbox-data/src/main/java/com/poslek/springsandbox/services/SuperHeroServiceImpl.java
