@@ -1,16 +1,16 @@
 package com.poslek.springsandbox.bootstrap;
 
 import com.poslek.springsandbox.model.SuperHero;
-import com.poslek.springsandbox.services.SuperheroService;
+import com.poslek.springsandbox.services.SuperHeroService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final SuperheroService superheroService;
+    private final SuperHeroService superheroService;
 
-    public DataLoader(SuperheroService superheroService) {
+    public DataLoader(SuperHeroService superheroService) {
         this.superheroService = superheroService;
     }
 

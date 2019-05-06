@@ -1,7 +1,7 @@
 package com.poslek.springsandbox.controllers;
 
 import com.poslek.springsandbox.model.SuperHero;
-import com.poslek.springsandbox.services.SuperheroService;
+import com.poslek.springsandbox.services.SuperHeroService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -9,9 +9,9 @@ import java.util.Set;
 @RestController
 public class SuperHeroController {
 
-    private final SuperheroService superheroService;
+    private final SuperHeroService superheroService;
 
-    public SuperHeroController(SuperheroService superheroService) {
+    public SuperHeroController(SuperHeroService superheroService) {
         this.superheroService = superheroService;
     }
 

@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class SuperHeroServiceImpl implements SuperheroService {
+public class SuperHeroServiceImpl implements SuperHeroService {
 
     private final SuperHeroRepository superHeroRepository;
 
