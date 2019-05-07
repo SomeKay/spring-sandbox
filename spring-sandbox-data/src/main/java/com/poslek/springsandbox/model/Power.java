@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.poslek.springsandbox.serialiazers.CustomSuperHeroSerializer;
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.HashSet;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 @Getter
@@ -13,20 +15,24 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "cities")
-public class City extends BaseEntity {
+@Table(name = "powers")
+public class Power extends BaseEntity {
 
     @Builder
-    public City(Long id, String name) {
+    public Power(Long id, String name, Float strength) {
         super(id);
         this.name = name;
+        this.strength = strength;
     }
 
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
+    @Column(name = "strength")
+    private Float strength;
+
+    @ManyToMany(mappedBy = "powers")
     @JsonSerialize(using = CustomSuperHeroSerializer.class)
-    private Set<SuperHero> superHeroes = new HashSet<>();
+    private Set<SuperHero> superheroes;
 
 }

@@ -1,10 +1,13 @@
 package com.poslek.springsandbox.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.poslek.springsandbox.serialiazers.CustomCitySerializer;
+import com.poslek.springsandbox.serialiazers.CustomPowerSerializer;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -12,8 +15,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "superheroes")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class SuperHero extends BaseEntity {
 
     @Builder
@@ -36,5 +37,12 @@ public class SuperHero extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "city_id")
+    @JsonSerialize(using = CustomCitySerializer.class)
     private City city;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "superhero_powers", joinColumns = @JoinColumn(name = "superhero_id"),
+            inverseJoinColumns = @JoinColumn(name = "power_id"))
+    @JsonSerialize(using = CustomPowerSerializer.class)
+    private Set<Power> powers = new HashSet<>();
 }

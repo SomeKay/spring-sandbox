@@ -49,6 +49,7 @@ public class SuperHeroController {
         superHero.setLastName(updateSuperHero.getLastName());
         superHero.setHeroName(updateSuperHero.getHeroName());
         superHero.setCity(updateSuperHero.getCity());
+        superHero.setPowers(updateSuperHero.getPowers());
 
         return this.superheroService.save(superHero);
     }
