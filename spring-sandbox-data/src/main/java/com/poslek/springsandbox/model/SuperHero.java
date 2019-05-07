@@ -1,10 +1,10 @@
 package com.poslek.springsandbox.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -12,10 +12,12 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "superheroes")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class SuperHero extends BaseEntity {
 
     @Builder
-    public SuperHero(Long id, String firstName, String lastName, String heroName, String city) {
+    public SuperHero(Long id, String firstName, String lastName, String heroName, City city) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,6 +34,7 @@ public class SuperHero extends BaseEntity {
     @Column(name = "heroName")
     private String heroName;
 
-    @Column(name = "city")
-    private String city;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
 }

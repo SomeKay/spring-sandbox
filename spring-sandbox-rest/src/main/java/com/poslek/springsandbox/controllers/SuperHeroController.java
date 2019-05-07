@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
+@RequestMapping("/superheroes")
 public class SuperHeroController {
 
     private final SuperHeroService superheroService;
@@ -15,12 +16,12 @@ public class SuperHeroController {
         this.superheroService = superheroService;
     }
 
-    @GetMapping("/superheroes")
+    @GetMapping("")
     public Set<SuperHero> superHeroes() {
         return this.superheroService.findAll();
     }
 
-    @GetMapping("/superheroes/{id}")
+    @GetMapping("/{id}")
     public SuperHero superHero(@PathVariable Long id) {
         SuperHero superHero = this.superheroService.findById(id);
 
@@ -31,12 +32,12 @@ public class SuperHeroController {
         return superHero;
     }
 
-    @PostMapping("/superheroes")
+    @PostMapping("")
     public SuperHero addSuperHero(@RequestBody SuperHero superHero) {
         return this.superheroService.save(superHero);
     }
 
-    @PutMapping("/superheroes/{id}")
+    @PutMapping("/{id}")
     public SuperHero updateSuperHero(@RequestBody SuperHero updateSuperHero, @PathVariable Long id) {
         SuperHero superHero = this.superheroService.findById(id);
 
@@ -52,7 +53,7 @@ public class SuperHeroController {
         return this.superheroService.save(superHero);
     }
 
-    @DeleteMapping("/superheroes/{id}")
+    @DeleteMapping("/{id}")
     public void deleteSuperHero(@PathVariable Long id) {
         this.superheroService.deleteById(id);
     }
