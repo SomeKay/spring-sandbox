@@ -47,7 +47,7 @@ public class PowerController {
 
         power.setName(updatePower.getName());
         power.setStrength(updatePower.getStrength());
-        power.setSuperheroes(updatePower.getSuperheroes());
+        power.setSuperHeroes(updatePower.getSuperHeroes());
 
         return this.powerService.save(power);
     }

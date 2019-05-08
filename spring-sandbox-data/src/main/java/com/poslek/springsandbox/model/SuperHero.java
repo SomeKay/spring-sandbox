@@ -1,8 +1,6 @@
 package com.poslek.springsandbox.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.poslek.springsandbox.serialiazers.CustomCitySerializer;
-import com.poslek.springsandbox.serialiazers.CustomPowerSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,13 +34,11 @@ public class SuperHero extends BaseEntity {
     private String heroName;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
-    @JsonSerialize(using = CustomCitySerializer.class)
+    @JsonIgnoreProperties(value = { "superHeroes" })
     private City city;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "superhero_powers", joinColumns = @JoinColumn(name = "superhero_id"),
             inverseJoinColumns = @JoinColumn(name = "power_id"))
-    @JsonSerialize(using = CustomPowerSerializer.class)
+    @JsonIgnoreProperties(value = { "superHeroes" })
     private Set<Power> powers = new HashSet<>();
 }

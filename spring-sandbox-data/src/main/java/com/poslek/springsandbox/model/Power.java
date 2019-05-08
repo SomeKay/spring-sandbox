@@ -1,7 +1,6 @@
 package com.poslek.springsandbox.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.poslek.springsandbox.serialiazers.CustomSuperHeroSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -32,7 +31,7 @@ public class Power extends BaseEntity {
     private Float strength;
 
     @ManyToMany(mappedBy = "powers")
-    @JsonSerialize(using = CustomSuperHeroSerializer.class)
-    private Set<SuperHero> superheroes;
+    @JsonIgnoreProperties(value = { "powers" })
+    private Set<SuperHero> superHeroes;
 
 }

@@ -90,7 +90,7 @@ public class DataLoader implements CommandLineRunner {
                     SuperHero.builder()
                             .firstName("Dick")
                             .lastName("Grayson")
-                            .heroName("Batman")
+                            .heroName("Robin")
                             .city(gotham)
                             .build();
             robin.getPowers().add(karate);

@@ -1,7 +1,6 @@
 package com.poslek.springsandbox.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.poslek.springsandbox.serialiazers.CustomSuperHeroSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,7 +25,7 @@ public class City extends BaseEntity {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
-    @JsonSerialize(using = CustomSuperHeroSerializer.class)
+    @JsonIgnoreProperties(value = { "city" })
     private Set<SuperHero> superHeroes = new HashSet<>();
 
 }
