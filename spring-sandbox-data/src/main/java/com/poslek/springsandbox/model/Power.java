@@ -13,6 +13,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "powers")
 public class Power extends BaseEntity {
@@ -31,7 +32,7 @@ public class Power extends BaseEntity {
     private Float strength;
 
     @ManyToMany(mappedBy = "powers")
-    @JsonIgnoreProperties(value = { "powers" })
+    @JsonIgnoreProperties(value = {"powers"})
     private Set<SuperHero> superHeroes;
 
 }
